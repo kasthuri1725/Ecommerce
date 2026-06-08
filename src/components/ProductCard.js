@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getsingleproduct } from "../services/ProductService";
 import { useNavigate } from "react-router-dom";
 
@@ -25,6 +25,20 @@ export default function ProductCard({
 
   const navigate = useNavigate();
 
+  const [isWishlisted, setIsWishlisted] = useState(false);
+
+useEffect(() => {
+  const wishlist =
+    JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  const exists = wishlist.some(
+    (item) => String(item.id) === String(id)
+  );
+
+  setIsWishlisted(exists);
+}, [id]);
+
+  
   // TOTAL
   const total = price * qty;
 
@@ -82,8 +96,6 @@ const savedAmount = Math.round(
 
   };
  
-  const [isWishlisted, setIsWishlisted] = useState(false); // ❌
-
 
 const addToWishlist = () => {
   const wishlist =
