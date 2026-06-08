@@ -1,7 +1,10 @@
 import React, { useState} from "react";
+import Wishlist from "../pages/Wishlist";
+import Orders from "../pages/Orders";
+import Profile from "../pages/Profile";
 
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route
 } from "react-router-dom";
@@ -17,7 +20,7 @@ export default function Router() {
 
   return (
 
-    <BrowserRouter>
+    <HashRouter>
 
       <Routes>
 
@@ -45,11 +48,16 @@ export default function Router() {
          <Route
            path="/product/:id"
            element={<ProductDetails/>}
-           />
+           /> 
+
+            <Route path="/wishlist" element={<Wishlist />} />
+<Route path="/orders" element={<Orders />} />
+<Route path="/profile" element={<Profile />} />
+
 
       </Routes>
 
-    </BrowserRouter>
+    </HashRouter>
 
   );
 }

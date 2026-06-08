@@ -21,7 +21,7 @@ export default function ProductDetails() {
         `https://dummyjson.com/products/${id}`
       )
       .then((res) => {
-
+        
         setProduct(res.data);
 
       });
@@ -38,11 +38,10 @@ export default function ProductDetails() {
 
     <div>
 
-      <img
-        src={product.thumbnail}
-        alt={product.title}
-        width="300"
-      />
+       <img
+  src={product?.thumbnail || product?.image}
+  alt={product?.title}
+/>
 
       <h1>{product.title}</h1>
 

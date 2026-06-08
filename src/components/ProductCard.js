@@ -81,6 +81,50 @@ const savedAmount = Math.round(
     setOpen(false);
 
   };
+ 
+  const [isWishlisted, setIsWishlisted] = useState(false); // ❌
+
+
+const addToWishlist = () => {
+  const wishlist =
+    JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  const product = {
+    id,
+    title,
+    price,
+    image,
+    rating,
+  };
+
+  const exists = wishlist.some(
+    (item) => String(item.id) === String(id)
+  );
+
+  let updatedWishlist;
+
+  if (exists) {
+    updatedWishlist = wishlist.filter(
+      (item) => String(item.id) !== String(id)
+    );
+    setIsWishlisted(false);
+    alert("Removed from Wishlist 💔");
+  } else {
+    updatedWishlist = [...wishlist, product];
+    setIsWishlisted(true);
+    alert("Added to Wishlist ❤️");
+  }
+
+  localStorage.setItem(
+    "wishlist",
+    JSON.stringify(updatedWishlist)
+  );
+};
+
+
+
+
+
 
   // BUY NOW
   const handleBuyNow = () => {
@@ -98,13 +142,28 @@ const savedAmount = Math.round(
 
         {/* IMAGE */}
 
-        <img
-          src={image}
-          alt={title}
-          className="product-image"
-          onClick={() => showDetails(id)}
-          style={{ cursor: "pointer" }}
-        />
+     <div className="image-container">
+
+
+<button
+  className="heart-btn"
+  onClick={(e) => {
+    e.stopPropagation();
+    addToWishlist();
+  }}
+>
+  {isWishlisted ? "💖" : "🤍"}
+</button>
+
+  <img
+    src={image}
+    alt={title}
+    className="product-image"
+    onClick={() => showDetails(id)}
+    style={{ cursor: "pointer" }}
+  />
+
+</div>
 
         {/* NAME */}
 
@@ -280,6 +339,9 @@ const savedAmount = Math.round(
 
                 </div>
 
+
+                
+
                 {/* TOTAL */}
 
                 <h3 className="total-text">
@@ -288,23 +350,24 @@ const savedAmount = Math.round(
 
                 {/* BUTTONS */}
 
-                <div className="popup-buttons">
+               <div className="popup-buttons">
 
-                  <button
-                    className="cart-btn"
-                    onClick={handleAdd}
-                  >
-                    Add To Cart
-                  </button>
+  <button
+    className="cart-btn"
+    onClick={handleAdd}
+  >
+    Add To Cart
+  </button>
 
-                  <button
-                    className="buy-btn"
-                    onClick={handleBuyNow}
-                  >
-                    Buy Now
-                  </button>
+  <button
+    className="buy-btn"
+    onClick={handleBuyNow}
+  >
+    Buy Now
+  </button>
 
-                </div>
+
+</div>
 
                <div
                 className="product-card"
@@ -330,3 +393,4 @@ const savedAmount = Math.round(
   );
 }
 
+ 

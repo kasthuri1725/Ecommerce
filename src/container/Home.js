@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Dashboard from "../container/Dashboard";
-
 import { getProducts } from "../services/ProductService";
 import { useNavigate } from "react-router-dom";
 // import LoaderIcon from "@iconify-react/codex/loader";
@@ -43,7 +42,7 @@ setProducts(updatedProducts);
  };
 
 
-  return (
+  return (  
 
     <div>
       <Header handleLogout={handleLogout}/>

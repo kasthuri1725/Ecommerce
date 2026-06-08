@@ -1,68 +1,43 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../features/auth/authSlice";
 
 function Login() {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
+   const auth = useSelector((state) => state.auth);
+
+const loading = auth?.loading;
+const error = auth?.error;
+
 
   const [username, setUsername] =
     useState("");
 
   const [password, setPassword] =
     useState("");
+  
+    const handleLogin = async (e) => {
+  e.preventDefault();
 
-  const [loading, setLoading] =
-    useState(false);
+  try {
+    const data = await dispatch(
+      loginUser({ username, password })
+    ).unwrap();
 
-  const [error, setError] =
-    useState("");
+    console.log("LOGIN SUCCESS", data);
 
-  const handleLogin = async (e) => {
+    localStorage.setItem("token", data.token);
 
-    e.preventDefault();
-
-    setLoading(true);
-
-    setError("");
-
-    try {
-
-      const response = await axios.post(
-
-        "https://dummyjson.com/auth/login",
-
-        {
-          username,
-          password,
-        }
-      );
-
-      console.log(
-        response.data,
-        "LOGIN SUCCESS"
-      );
-
-      localStorage.setItem(
-        "token",
-        response.data.token
-      );
-
-      navigate("/home");
-
-    } catch (error) {
-
-      console.log(error);
-
-      setError(
-        "Invalid Username or Password"
-      );
-
-    } finally {
-
-      setLoading(false);
-    }
-  };
+    navigate("/home");
+  } catch (err) {
+    console.log("LOGIN FAILED:", err);
+  }
+};
+  
 
   return (
 
