@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
+
+
 
 export default function Header({handleLogout}) {
 
@@ -43,8 +46,11 @@ export default function Header({handleLogout}) {
 
       <div className="nav-section">
 
-        <Link to="/">
-          <button className="nav-btn">Home</button>
+        <Link to="/home">
+          <button className="nav-btn">
+            <Icon icon="mdi:home" className="nav-icon" />
+            Home
+            </button>
         </Link>
 
         <input
@@ -55,7 +61,8 @@ export default function Header({handleLogout}) {
 
         <Link to="/cart">
           <button className="cart-nav-btn">
-            🛒 Cart <span className="cart-count">{cartCount}</span>
+          <Icon icon="mdi:cart-outline" className="nav-icon" />
+             Cart <span className="cart-count">{cartCount}</span>
           </button>
         </Link>  
           
@@ -68,9 +75,11 @@ export default function Header({handleLogout}) {
   type="button"
   className="nav-btn"
 >
- 👤 Login ▼
+  <Icon icon="mdi:account-circle" className="nav-icon" />
+  Profile ▼
 </button>
 
+  
   {showDropdown && (
     <div className="dropdown-menu">
      
@@ -81,30 +90,36 @@ export default function Header({handleLogout}) {
       </div>
 
       <Link to="/profile" className="dropdown-item">
-        👤 My Profile
+        <Icon icon="mdi:account-circle" className="nav-icon" />
+         My Profile
       </Link>
 
       <Link to="/orders" className="dropdown-item">
-        📦 Orders
+        <Icon icon="mdi:package-variant" className="nav-icon" />
+         Orders
       </Link>
 
       <Link to="/wishlist" className="dropdown-item">
-        ❤️ Wishlist
+        <Icon icon="mdi:heart" className="nav-icon" />
+        Wishlist
       </Link>
 
       <Link to="/rewards" className="dropdown-item">
-        🎁 Rewards
+      <Icon icon="mdi:gift" className="nav-icon" />
+      Rewards
       </Link>
 
       <Link to="/notifications" className="dropdown-item">
-        🔔 Notification Preferences
+        <Icon icon="mdi:bell" className="nav-icon" />
+         Notification Preferences
       </Link>
 
       <button
         className="dropdown-item logout-item"
         onClick={handleLogout}
       >
-        🚪 Logout
+        <Icon icon="mdi:logout" className="nav-icon" />
+        logout
       </button>
 
     </div>

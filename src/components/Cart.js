@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import BackButton from "../components/BackButton";
 
 export default function Cart() {
 
@@ -54,6 +55,7 @@ export default function Cart() {
   return (
 
     <div className="cart-container">
+        <BackButton />
 
       {/* TITLE */}
       <h1 className="cart-title">

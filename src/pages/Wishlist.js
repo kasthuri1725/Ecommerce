@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BackButton from "../components/BackButton";
 
 export default function Wishlist() {
   const [items, setItems] = useState([]);
@@ -24,7 +25,10 @@ export default function Wishlist() {
   }, []);
 
   return (
-    <div className="wishlist-container">
+    <div className="back-btn-wrapper">
+
+      <BackButton />
+
       <h1>❤️ My Wishlist</h1>
 
       {items.length === 0 ? (

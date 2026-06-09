@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { getsingleproduct } from "../services/ProductService";
 import { useNavigate } from "react-router-dom";
+import { Icon } from "@iconify/react";
+
 
 export default function ProductCard({
   id,
@@ -164,7 +166,11 @@ const addToWishlist = () => {
     addToWishlist();
   }}
 >
-  {isWishlisted ? "💖" : "🤍"}
+  {isWishlisted ? (
+    <Icon icon="mdi:heart" color="red" width="22" />
+  ) : (
+    <Icon icon="mdi:heart-outline" color="black" width="22" />
+  )}
 </button>
 
   <img

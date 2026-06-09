@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 import Login from "../pages/Login";
-import Home from "../container/Home";
+import Home from "../pages/Home";
 import Cart from "../components/Cart";
 import ProductDetails from "../components/ProductDetails";
 
