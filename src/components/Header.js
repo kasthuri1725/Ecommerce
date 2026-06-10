@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
-
+import { FaSearch } from "react-icons/fa";
 
 
 export default function Header({handleLogout}) {
@@ -42,24 +42,28 @@ export default function Header({handleLogout}) {
   return (
     <div className="header">
 
-      <h1 className="logo">Makeup Accessories</h1>
+      <h1 className="logo">Shopsy</h1>
 
       <div className="nav-section">
 
-        <Link to="/home">
+        <Link to="/home" className="nav-link">
           <button className="nav-btn">
             <Icon icon="mdi:home" className="nav-icon" />
             Home
             </button>
         </Link>
 
+        <div className="search-container">
+  <FaSearch className="search-icon" />
+
         <input
           className="search-box"
           type="text"
           placeholder="Search products..."
         />
+        </div>
 
-        <Link to="/cart">
+        <Link to="/cart"  className="nav-link">
           <button className="cart-nav-btn">
           <Icon icon="mdi:cart-outline" className="nav-icon" />
              Cart <span className="cart-count">{cartCount}</span>

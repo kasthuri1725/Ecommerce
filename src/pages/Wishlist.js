@@ -25,11 +25,11 @@ export default function Wishlist() {
   }, []);
 
   return (
-    <div className="back-btn-wrapper">
+    <div className="back-btn-up">
 
       <BackButton />
 
-      <h1>❤️ My Wishlist</h1>
+      <h1> My Wishlist</h1>
 
       {items.length === 0 ? (
         <h2>No Wishlist Items</h2>

@@ -51,8 +51,10 @@ export default function Router() {
            /> 
 
             <Route path="/wishlist" element={<Wishlist />} />
-<Route path="/orders" element={<Orders />} />
-<Route path="/profile" element={<Profile />} />
+            
+            <Route path="/orders" element={<Orders />} />
+
+            <Route path="/profile" element={<Profile />} />
 
 
       </Routes>

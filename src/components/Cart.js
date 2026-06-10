@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
 
 export default function Cart() {
+
+  const navigate = useNavigate();
 
   const [cartItems, setCartItems] = useState([]);
   const [selectedItem, setSelectedItem] =
@@ -42,15 +45,27 @@ export default function Cart() {
   // BUY NOW
   const handleBuy = () => {
 
-    alert(
-      "Order Placed Successfully ❤️"
-    );
+  const oldOrders =
+    JSON.parse(localStorage.getItem("orders")) || [];
 
-    localStorage.removeItem("cart");
+  const updatedOrders = [
+    ...oldOrders,
+    ...cartItems
+  ];
 
-    setCartItems([]);
+  localStorage.setItem(
+    "orders",
+    JSON.stringify(updatedOrders)
+  );
 
-  };
+  alert("Order Placed Successfully ❤️");
+
+  localStorage.removeItem("cart");
+
+  setCartItems([]);
+
+  navigate("/orders");
+};
 
   return (
 
@@ -59,7 +74,7 @@ export default function Cart() {
 
       {/* TITLE */}
       <h1 className="cart-title">
-        🛒 My Cart
+        My Cart
       </h1>
 
       {/* EMPTY */}

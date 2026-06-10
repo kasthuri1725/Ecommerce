@@ -39,8 +39,8 @@ export default function ProductDetails() {
     <div>
 
        <img
-  src={product?.thumbnail || product?.image}
-  alt={product?.title}
+          src={product?.thumbnail || product?.image}
+          alt={product?.title}
 />
 
       <h1>{product.title}</h1>
