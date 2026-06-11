@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Dashboard from "../container/Dashboard";
 import { getProducts } from "../services/ProductService";
 import { useNavigate } from "react-router-dom";
-// import LoaderIcon from "@iconify-react/codex/loader";
+
 
 function Home({ cart, setCart }) {
   const navigate=useNavigate();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getProducts } from "../services/ProductService";
-import LoaderIcon from "@iconify-react/codex/loader";
+import Loader from "../components/Loader";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -42,15 +42,10 @@ const [loading, setLoading] = useState(true);
     }
   };
   
+if (loading) {
+  return <Loader />;
+}
 
-  if (loading) {
-    return (
-      <div>
-        <LoaderIcon height="6em"/>
-      <h2>loading product...</h2>
-      </div>
-    );
-  }
 
   return (
     <div className="p-5 grid grid-cols-4 gap-5">

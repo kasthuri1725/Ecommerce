@@ -1,5 +1,6 @@
 import React from "react";
 import ProductCard from "../components/ProductCard";
+import Loader from "../components/Loader";
 
 export default function Dashboard({
   products,
@@ -26,18 +27,9 @@ export default function Dashboard({
   };
 
   // LOADING
-  if (loading) {
-    return (
-      <h1
-        style={{
-          textAlign: "center",
-          marginTop: "100px"
-        }}
-      >
-        Loading...
-      </h1>
-    );
-  }
+ if (loading) {
+  return <Loader />;
+}
 
   return (
 

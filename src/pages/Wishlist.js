@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
+import { Icon } from "@iconify/react";
 
 export default function Wishlist() {
   const [items, setItems] = useState([]);
@@ -23,6 +24,23 @@ export default function Wishlist() {
       window.removeEventListener("storage", loadWishlist);
     };
   }, []);
+   
+
+  const removeFromWishlist = (id) => {
+  const updatedWishlist = items.filter(
+    (item) => String(item.id) !== String(id)
+  );
+
+  localStorage.setItem(
+    "wishlist",
+    JSON.stringify(updatedWishlist)
+  );
+
+  setItems(updatedWishlist);
+};
+
+
+
 
   return (
     <div className="back-btn-up">
@@ -47,11 +65,25 @@ export default function Wishlist() {
               className="wishlist-image"
             />
 
-            <div className="wishlist-info">
-              <h3>{item.title}</h3>
-              <p>₹ {item.price}</p>
-              <p>⭐ {item.rating?.rate || item.rating}</p>
-            </div>
+           <button
+  className="wishlist-heart-btn"
+  onClick={(e) => {
+    e.stopPropagation();
+    removeFromWishlist(item.id);
+  }}
+>
+  <Icon
+    icon="mdi:heart"
+    color="red"
+    width="24"
+  />
+</button>
+
+<div className="wishlist-info">
+  <h3>{item.title}</h3>
+  <p>₹ {item.price}</p>
+  <p>⭐ {item.rating?.rate || item.rating}</p>
+</div>
           </div>
         ))
       )}

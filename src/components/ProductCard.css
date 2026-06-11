@@ -1,0 +1,41 @@
+.fullpage-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.fullpage-content {
+  width: 90%;
+  height: 90vh;
+  background: white;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.left-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f4f4;
+}
+
+.left-section img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.right-section {
+  flex: 1;
+  padding: 25px;
+  overflow-y: auto;
+}
+
+
+

@@ -75,12 +75,10 @@ export default function Header({handleLogout}) {
   onMouseEnter={() => setShowDropdown(true)}
   onMouseLeave={() => setShowDropdown(false)}
 >
-  <button
-  type="button"
-  className="nav-btn"
->
+  <button type="button" className="nav-btn">
   <Icon icon="mdi:account-circle" className="nav-icon" />
-  Profile ▼
+  <span>Profile</span>
+  <span className="arrow">▼</span>
 </button>
 
   
